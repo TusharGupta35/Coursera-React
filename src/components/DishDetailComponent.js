@@ -31,8 +31,7 @@ class DishDetail extends Component {
             return(
                 <div key={comment.id}>
                     <p>{comment.comment}</p>
-                    <p>--{comment.author}</p>
-                    <p>-- {comment.author}, {month[d.getMonth()]} {d.getDay()}, {d.getFullYear()}</p>
+                    <p>--{comment.author} , {month[d.getMonth()]} {d.getDay()}, {d.getFullYear()}</p>
                 </div>
             )
         })
