@@ -3,13 +3,6 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class DishDetail extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
-    }
-
     renderDish(dish) {
         return (
             <Card>
@@ -26,12 +19,13 @@ class DishDetail extends Component {
 
         const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-        const comList = comments.map((comment)=>{
+        const comList = comments.map((comment) => {
             let d = new Date(comment.date);
-            return(
+            return (
                 <div key={comment.id}>
                     <p>{comment.comment}</p>
                     <p>--{comment.author} , {month[d.getMonth()]} {d.getDay()}, {d.getFullYear()}</p>
+                    <p>--{new Intl.DateTimeFormat('en-US', { year: "numeric", month: "short", day: "2-digit" }).format(new Date(Date.parse(comment.date)))}</p>
                 </div>
             )
         })
@@ -45,16 +39,23 @@ class DishDetail extends Component {
     }
 
     render() {
-        return (
-            <div className='row'>
-                <div className='col-12 col-md-5 m-1'>
-                    {this.renderDish(this.props.selectedDish)}
+        if (this.props.dish != null) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-md-5 m-1">
+                            {this.renderDish(this.props.dish)}
+                        </div>
+                        <div className="col-12 col-md-5 m-1">
+                            {this.renderComments(this.props.dish.comments)}
+                        </div>
+                    </div>
                 </div>
-                <div className='col-12 col-md-5 m-1'>
-                    {this.renderComments(this.props.selectedDish.comments)}
-                </div>
-            </div>
-        )
+            )
+
+        }
+        return (null)
+
     }
 
 }
