@@ -80,7 +80,6 @@ class Header extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.handleLogin}>
                             <Form onSubmit={this.handleLogin}>
                                 <FormGroup>
                                     <Label htmlFor="username">Username</Label>
@@ -101,7 +100,6 @@ class Header extends Component {
                                 </FormGroup>
                                 <Button type="submit" value="submit" color="primary">Login</Button>
                             </Form>
-                        </Form>
                     </ModalBody>
                 </Modal>
             </>
