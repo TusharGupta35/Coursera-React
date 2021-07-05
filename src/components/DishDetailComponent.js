@@ -60,6 +60,7 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
+        this.toggleModal();
         console.log(values);
         alert(JSON.stringify(values));
     }
